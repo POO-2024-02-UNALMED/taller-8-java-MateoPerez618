@@ -53,7 +53,7 @@ public abstract class Futbolista implements Comparable<Futbolista> {
     public String toString() {
         return "El futbolista" + nombre +
                "tiene" + edad +
-               "y juega de" + posicion;
+               ", y juega de" + posicion;
     }
 
 }
