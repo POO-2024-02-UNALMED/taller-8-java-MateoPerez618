@@ -1,21 +1,24 @@
 package futbol;
 
 public abstract class Futbolista implements Comparable<Futbolista> {
-	
-	private String nombre;
-	private int edad;
-	private String posicion; 
-	
+    
+    private String nombre;
+    private int edad;
+    private String posicion;
+    
+    // Constructor con parámetros
     public Futbolista(String nombre, int edad, String posicion) {
         this.nombre = nombre;
         this.edad = edad;
         this.posicion = posicion;
     }
     
+    // Constructor por defecto
     public Futbolista() {
-    	this("Maradona", 30, "delantero");
+        this("Maradona", 30, "delantero");
     }
     
+    // Métodos getter
     public String getNombre() {
         return nombre;
     }
@@ -28,6 +31,7 @@ public abstract class Futbolista implements Comparable<Futbolista> {
         return posicion;
     }
 
+    // Métodos setter
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -35,26 +39,30 @@ public abstract class Futbolista implements Comparable<Futbolista> {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    
+
+    // Método equals
     @Override
-    public int compareTo(Futbolista otro) {
-        return Math.abs(this.getEdad() - otro.getEdad());
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Futbolista f = (Futbolista) obj;
+        return nombre.equals(f.nombre) && edad == f.edad && posicion.equals(f.posicion);
     }
-    
-    public boolean equals(Futbolista f) {
-        if (this == f) return true;
-        if (f == null) return false;
-        return this.nombre.equals(f.nombre) && this.edad == f.edad && this.posicion.equals(f.posicion);
-    }
-    
+
+    // Método abstracto
     public abstract boolean jugarConLasManos();
-    
+
+    // Método toString
     @Override
     public String toString() {
-        return "El futbolista" + nombre +
-               "tiene" + edad +
-               ", y juega de" + posicion;
+        return "El futbolista " + nombre +
+               " tiene " + edad +
+               ", y juega de " + posicion;
     }
 
+    // Método compareTo básico
+    @Override
+    public int compareTo(Futbolista otro) {
+        return Integer.compare(this.edad, otro.edad);
+    }
 }
-

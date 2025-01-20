@@ -14,19 +14,13 @@ public class Portero extends Futbolista{
     public boolean jugarConLasManos() {
         return true;
     }
-
-    @Override
+	
+	@Override
     public int compareTo(Futbolista otro) {
-        if (otro instanceof Portero) {
-            // Si el otro objeto es un Portero, comparamos los goles
-            Portero otroPortero = (Portero) otro;
-            return Math.abs(this.golesRecibidos - otroPortero.golesRecibidos);
-        }
-        
-        // Si no es un Portero, comparamos la edad (como lo hace Futbolista)
-        return super.compareTo(otro);
+        Portero otroPortero = (Portero) otro;
+        return Math.abs(this.golesRecibidos - otroPortero.golesRecibidos);
     }
-    
+	
     @Override
     public String toString() {
     	 return "El futbolista " + this.getNombre() + " tiene " + this.getEdad() + 
